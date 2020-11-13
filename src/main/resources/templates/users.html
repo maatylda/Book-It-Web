@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Users</h1>
+<div>
+    <p th:text="'Email: ' + ${userDto.getEmail()}"></p>
+    <p th:text="'Status: ' + ${userDto.getFirstName()}"></p>
+</div>
+
+<div>
+    <form th:action="@{/users/create}" method="post" th:object="${userDto}">
+        <label for="email">Email: </label>
+        <input id="email" type="text" th:field="*{email}">
+        <p th:if="${#fields.hasErrors('email')}"
+           th:text="${#fields.errors('email')}"></p>
+
+        <label for="password">Password: </label>
+        <input id="password" type="password" th:field="*{password}">
+
+
+        <button type="submit">CREATE USER</button>
+    </form>
+</div>
+</body>
+</html>
