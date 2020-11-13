@@ -77,6 +77,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--		my model-->
+		<dependency>
+			<groupId>book.it.</groupId>
+			<artifactId>aplication.model</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

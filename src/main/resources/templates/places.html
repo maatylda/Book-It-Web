@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Places</title>
+</head>
+<body>
+<div th:each="place :${places.getPlaces()}">
+    <p th:text="'name : ' + ${place.getName()}"></p>
+    <p th:text="'town : ' + ${place.getTownName()}"></p>
+    <p th:text="'rooms : ' +${place.getStreetNumber()}"></p>
+</div>
+
+</body>
+</html>
