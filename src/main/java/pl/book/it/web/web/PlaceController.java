@@ -29,4 +29,6 @@ public class PlaceController {
         modelMap.addAttribute("places",placesInTown);
         return "places";
     }
+
+
 }

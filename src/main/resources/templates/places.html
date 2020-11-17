@@ -8,7 +8,7 @@
 <div th:each="place :${places.getPlaces()}">
     <p th:text="'name : ' + ${place.getName()}"></p>
     <p th:text="'town : ' + ${place.getTownName()}"></p>
-    <p th:text="'rooms : ' +${place.getStreetNumber()}"></p>
+    <p th:text="'phone number : ' +${place.getPhoneNumber()}"></p>
 </div>
 
 </body>
