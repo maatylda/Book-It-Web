@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api/bia/places")
+@RequestMapping(WebConst.API_PLACES_PATH)
 public class RoomController {
 
     private final RoomService roomService;
