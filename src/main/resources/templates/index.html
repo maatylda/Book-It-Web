@@ -15,7 +15,7 @@
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active tm-white-bg" id="hotel">
         <div class="tm-search-box effect2">
-            <form action="#" th:action="@{/search}" method="get" class="hotel-search-form">
+            <form action="#" th:action="@{/api/bia/places/search}" method="get" class="hotel-search-form">
                 <div class="tm-form-inner">
                     <div class="form-group">
                         <div>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class='input-group date' id='datetimepicker1'>
+                        <div class='input-group date' id='datetimepicker1' >
                             <input type='text' class="form-control" placeholder="Check-in Date" th:name="from"/>
                             <span class="input-group-addon">
 							                        <span class="fa fa-calendar"></span>
@@ -35,8 +35,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class='input-group date' id='datetimepicker2'>
-                            <input type='text' class="form-control" placeholder="Check-out Date" th:name="to"/>
+                        <div class='input-group date' id='datetimepicker2' >
+                            <input type='text' class="form-control" placeholder="Check-out Date"  th:name="to"/>
                             <span class="input-group-addon">
 							                        <span class="fa fa-calendar"></span>
 							                    </span>

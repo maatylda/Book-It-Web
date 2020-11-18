@@ -3,6 +3,7 @@ package pl.book.it.web.web;
 import lombok.RequiredArgsConstructor;
 import model.Places;
 import model.Towns;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
@@ -36,8 +37,8 @@ public class PlaceController {
     }
 
     @GetMapping("/search")
-    public String getAllPlacesInTownAvailableInDates(ModelMap modelMap, @RequestParam("from")LocalDate dateFrom,
-                                                     @RequestParam("to")LocalDate dateTo,
+    public String getAllPlacesInTownAvailableInDates(ModelMap modelMap, @RequestParam("from")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dateFrom,
+                                                     @RequestParam("to")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)LocalDate dateTo,
                                                      @RequestParam("town") String townName, Errors errors){
         if (errors.hasErrors()) {
             return "index";
