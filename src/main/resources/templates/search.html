@@ -2,11 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Places</title>
+    <title>Search</title>
 </head>
 <body>
 <div th:each="place :${places.getPlaces()}">
-    <div>Halo halo</div>
     <p th:text="'name : ' + ${place.getName()}"></p>
     <p th:text="'town : ' + ${place.getTownName()}"></p>
     <p th:text="'phone number : ' +${place.getPhoneNumber()}"></p>

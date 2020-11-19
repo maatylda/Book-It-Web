@@ -2,12 +2,19 @@ package pl.book.it.web.web;
 
 import lombok.RequiredArgsConstructor;
 import model.Places;
+import model.Towns;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 import pl.book.it.web.services.PlaceService;
+import pl.book.it.web.services.TownService;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -15,6 +22,7 @@ import pl.book.it.web.services.PlaceService;
 public class PlaceController {
 
     private final PlaceService placeService;
+    private final TownService townService;
 
     @GetMapping
     public String getAllPlaces(ModelMap modelMap) {
@@ -25,8 +33,26 @@ public class PlaceController {
 
     @GetMapping("/towns/{townName}")
     public String getAllPlacesInTown(ModelMap modelMap, @PathVariable("townName") String townName){
-        final Places placesInTown = placeService.findAllPlacesByTown(townName);
-        modelMap.addAttribute("places",placesInTown);
+        final Places places = placeService.findAllPlacesByTown(townName);
+        modelMap.addAttribute("places",places);
         return "places";
+    }
+
+    @GetMapping("/search")
+    public String getAllPlacesInTownAvailableInDates(ModelMap modelMap, @RequestParam("from")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
+                                                     @RequestParam("to")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo,
+                                                     @RequestParam("town") String townName){
+
+        Places places= placeService.findAllPlaceInTownAvailableInDates(dateFrom,dateTo,townName);
+        modelMap.addAttribute("places",places);
+        return "search";
+    }
+
+    @GetMapping("/index")
+
+    public String searchForm (ModelMap modelMap) {
+        final Towns allTowns = townService.findAllTowns();
+        modelMap.addAttribute("towns",allTowns);
+        return "index";
     }
 }

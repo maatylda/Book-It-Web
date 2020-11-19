@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
 </head>
 <body>
-<p> Hello world</p>
+<form action="#" th:action="@{/api/bia/places/search}" method="get">
+
+
+    <label for="from">Date from</label>
+    <input id="from" type='date'  th:name="from"/>
+    <label for="to">Date to</label>
+    <input id="to" type='date' th:name="to"/>
+    <select th:name="town">
+                                <span th:each="town : ${towns.getTowns()}">
+                                <option th:text="${town.getName()}"></option>
+                                    </span>
+    </select>
+    <div >
+        <button type="submit" name="submit">Check Now</button>
+    </div>
+
+
+</form>
 
 </body>
+
 </html>
