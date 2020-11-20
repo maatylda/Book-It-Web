@@ -9,14 +9,14 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.book.it.web.services.UserService;
+import pl.book.it.web.client.UserClient;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/api/bia/users")
 public class UserController {
 
-    private final UserService userService;
+    private final UserClient userClient;
 
     @PostMapping("/create")
     public String createNewUser(@ModelAttribute("userDto") UserDto user, final Errors errors, ModelMap modelMap) {
@@ -24,7 +24,7 @@ public class UserController {
         if (errors.hasErrors()) {
             return "users";
         }
-        final ResponseEntity<UserDto> user1 = userService.createUser(user);
+        final ResponseEntity<UserDto> user1 = userClient.createUser(user);
         modelMap.addAttribute(user1);
         return "users";
     }

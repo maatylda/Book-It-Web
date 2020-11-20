@@ -11,13 +11,20 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Bean
     public RestTemplate restTemplate() {
+
         return new RestTemplate();
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        //registry.addViewController("/api/bia/index").setViewName("index");
+        registry.addViewController("/test").setViewName("test");
         registry.addViewController("/login").setViewName("login_page");
         registry.addViewController("/api/bia/users").setViewName("users");
+        registry.addViewController("/api/bia/places").setViewName("places");
+    }
+
+    @Bean
+    public BookingApiClientConfiguration bookingApiClientConfiguration() {
+        return new BookingApiClientConfiguration();
     }
 }
