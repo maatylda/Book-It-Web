@@ -21,5 +21,8 @@ public class UserClient {
         //User createdUser = restTemplate.getForObject("http://localhost:8081/signin", User.class, HttpStatus.CREATED);
         return restTemplate.postForEntity(baConfig.getBaseUrl() + API_USERS_PATH + "/create", user, UserDto.class);
     }
-
+///
+    public UserDto logIn(String email, String password) {
+        return restTemplate.getForObject(baConfig.getBaseUrl() + "/login", UserDto.class);
+    }
 }

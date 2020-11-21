@@ -11,11 +11,12 @@
     <p th:text="'phone number : ' +${place.getPhoneNumber()}"></p>
     <p th:text="'id : ' +${place.getId()}"></p>
     <form th:action="@{/api/bia/places/{placeId}/rooms/search (placeId= ${place.id})}" method="get">
-        <input type="hidden" th:value="${from}" th:name="from" ></input>
+        <input type="hidden" th:value="${from}" th:name="from"></input>
         <input type="hidden" th:value="${to}" th:name="to"></input>
-        <button type="submit" name="submit">Check Now</button></form>
-<!--    <a th:href="@{/api/bia/places/{placeId}/rooms (placeId= ${place.id})}">-->
-<!--        <span>see details</span></a>-->
+        <button type="submit" name="submit">Check Now</button>
+    </form>
+    <!--    <a th:href="@{/api/bia/places/{placeId}/rooms (placeId= ${place.id})}">-->
+    <!--        <span>see details</span></a>-->
 </div>
 
 </body>

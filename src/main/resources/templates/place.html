@@ -8,12 +8,12 @@
 <div th:text="'place :'+${place.getTownName()}"></div>
 <div th:text="'place :'+${place.getName()}"></div>
 <div th:text="'place :'+${place.getPhoneNumber()}"></div>
-    <div th:each="room :${rooms.getRooms()}">
-        <p th:text="'id : ' + ${room.getId()}"></p>
-        <p th:text="'town : ' + ${room.getPrice()}"></p>
-        <p th:text="'room type : ' +${room.getRoomType()}"></p>
-        <p th:text="'standard : ' +${room.getStandard()}"></p>
-    </div>
+<div th:each="room :${rooms.getRooms()}">
+    <p th:text="'id : ' + ${room.getId()}"></p>
+    <p th:text="'town : ' + ${room.getPrice()}"></p>
+    <p th:text="'room type : ' +${room.getRoomType()}"></p>
+    <p th:text="'standard : ' +${room.getStandard()}"></p>
+</div>
 
 
 </body>
