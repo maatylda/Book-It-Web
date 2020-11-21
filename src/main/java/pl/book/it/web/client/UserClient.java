@@ -22,4 +22,7 @@ public class UserClient {
         return restTemplate.postForEntity(baConfig.getBaseUrl() + API_USERS_PATH + "/create", user, UserDto.class);
     }
 
+    public UserDto findUserById(String email) {
+        return restTemplate.getForObject(baConfig.getBaseUrl() + "/login", UserDto.class);
+    }
 }
