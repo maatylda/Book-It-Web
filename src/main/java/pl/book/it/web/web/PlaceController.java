@@ -16,9 +16,11 @@ import pl.book.it.web.client.TownClient;
 import java.time.LocalDate;
 import java.util.Map;
 
+import static pl.book.it.web.web.WebConst.API_PLACES_PATH;
+
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api/bia/places")
+@RequestMapping(API_PLACES_PATH)
 public class PlaceController {
 
     private final PlaceClient placeClient;
