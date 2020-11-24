@@ -8,23 +8,24 @@
 <div th:text="'place :'+${place.getTownName()}"></div>
 <div th:text="'place :'+${place.getName()}"></div>
 <div th:text="'place :'+${place.getPhoneNumber()}"></div>
+
 <div th:each="room :${rooms.getRooms()}">
     <p th:text="'id : ' + ${room.getId()}"></p>
     <p th:text="'town : ' + ${room.getPrice()}"></p>
     <p th:text="'room type : ' +${room.getRoomType()}"></p>
     <p th:text="'standard : ' +${room.getStandard()}"></p>
-    <form action="#" th:action="@{/api/bia/users/bookings/new}" method="post" th:object="${booking}">
+    <form action="#" th:action="@{/users/bookings/new}" method="post" th:object="${booking}">
         <div class="row">
             <label class="col-6" for="dateFrom">From</label>
             <input type="hidden" id="dateFrom" th:name="dateFrom" th:value="${from}" th:field="*{dateFrom}"/>
         </div>
         <div class="row">
             <label class="col-6" for="dateTo">to</label>
-        <input type="hidden" id="dateTo" th:name="dateTo" th:value="${to}" th:field="*{dateTo}"/>
+            <input type="hidden" id="dateTo" th:name="dateTo" th:value="${to}" th:field="*{dateTo}"/>
         </div>
         <div class="row">
             <label class="col-6" for="userEmail">mail</label>
-        <input type="hidden" id="userEmail" th:name="userEmail"th:value="${email}" th:field="*{userEmail}"/>
+            <input type="hidden" id="userEmail" th:name="userEmail" th:value="${email}" th:field="*{userEmail}"/>
         </div>
         <div class="row">
             <label class="col-6" for="placeId">place</label>

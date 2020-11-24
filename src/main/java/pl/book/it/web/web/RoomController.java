@@ -23,7 +23,7 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(WebConst.API_PLACES_PATH)
+@RequestMapping(WebConst.PLACES_PATH)
 public class RoomController {
 
     private final RoomClient roomClient;

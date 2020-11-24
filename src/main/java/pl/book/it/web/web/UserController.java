@@ -13,7 +13,7 @@ import pl.book.it.web.client.UserClient;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api/bia/users")
+@RequestMapping(WebConst.USERS_PATH)
 public class UserController {
 
     private final UserClient userClient;
