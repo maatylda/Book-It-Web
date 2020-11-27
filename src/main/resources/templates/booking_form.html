@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Form</title>
 </head>
 <body>
-$END$
+    <form th:action="@{/users/bookings/new2}" method="post" th:object="${bookingDto}">
+        <div class="row">
+            <label class="col-6" for="dateFrom">From</label>
+            <input class="form-control" type="date" id="dateFrom"   th:name="from">
+        </div>
+        <div class="row">
+            <label class="col-6" for="dateTo">to</label>
+            <input class="form-control" type="date" id="dateTo"  th:name="to">
+        </div>
+        <div class="row">
+            <label class="col-6" for="userEmail">mail</label>
+            <input class="form-control" type="text" id="userEmail"   th:field="*{userEmail}">
+        </div>
+        <div class="row">
+            <label class="col-6" for="placeId">place</label>
+            <input class="form-control" type="text" id="placeId"   th:field="*{placeId}">
+        </div>
+        <div class="row">
+            <label class="col-6" for="roomId">room</label>
+            <input class="form-control" type="text" id="roomId" th:field="*{roomId}">
+        </div>
+        <button type="submit" name="submit">Check In Now</button>
+    </form>
+
 </body>
 </html>

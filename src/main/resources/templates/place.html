@@ -8,30 +8,27 @@
 <div th:text="'place :'+${place.getTownName()}"></div>
 <div th:text="'place :'+${place.getName()}"></div>
 <div th:text="'place :'+${place.getPhoneNumber()}"></div>
+
 <div th:each="room :${rooms.getRooms()}">
     <p th:text="'id : ' + ${room.getId()}"></p>
     <p th:text="'town : ' + ${room.getPrice()}"></p>
     <p th:text="'room type : ' +${room.getRoomType()}"></p>
     <p th:text="'standard : ' +${room.getStandard()}"></p>
-    <form action="#" th:action="@{/api/bia/users/bookings/new}" method="post" th:object="${booking}">
+    <form action="#" th:action="@{/users/bookings/new2}" method="post" th:object="${booking}">
         <div class="row">
             <label class="col-6" for="dateFrom">From</label>
-            <input type="hidden" id="dateFrom" th:name="dateFrom" th:value="${from}" th:field="*{dateFrom}"/>
+            <input type="hidden" id="dateFrom" th:name="from" th:value="${from}"/>
         </div>
         <div class="row">
-            <label class="col-6" for="dateTo">to</label>
-        <input type="hidden" id="dateTo" th:name="dateTo" th:value="${to}" th:field="*{dateTo}"/>
+            <input type="hidden" id="dateTo" th:name="to" th:value="${to}"/>
         </div>
         <div class="row">
-            <label class="col-6" for="userEmail">mail</label>
-        <input type="hidden" id="userEmail" th:name="userEmail"th:value="${email}" th:field="*{userEmail}"/>
+            <input type="hidden" id="userEmail" th:name="userEmail" th:value="${email}" th:field="*{userEmail}"/>
         </div>
         <div class="row">
-            <label class="col-6" for="placeId">place</label>
             <input type="hidden" id="placeId" name="placeId" th:value="${place.id}" th:field="*{placeId}"/>
         </div>
         <div class="row">
-            <label class="col-6" for="roomId">room</label>
             <input type="hidden" id="roomId" name="roomId" th:value="${room.id}" th:field="*{roomId}"/>
         </div>
         <button type="submit" name="submit">Check In Now</button>
