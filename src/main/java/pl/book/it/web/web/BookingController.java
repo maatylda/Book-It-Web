@@ -29,7 +29,6 @@ public class BookingController {
     @GetMapping(path = "/new2", consumes = MediaType.ALL_VALUE)
     public String createNewBooking2(Model model) {
         model.addAttribute("bookingDto", new BookingDto());
-
         return "booking_form";
     }
 
