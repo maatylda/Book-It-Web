@@ -3,21 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="/css/style1.css">
+    <div th:replace="fragments :: style"/>
 </head>
 <body>
-<div th:each="place :${places.getPlaces()}">
-    <p th:text="'name : ' + ${place.getName()}"></p>
-    <p th:text="'town : ' + ${place.getTownName()}"></p>
-    <p th:text="'phone number : ' +${place.getPhoneNumber()}"></p>
-    <p th:text="'id : ' +${place.getId()}"></p>
-    <form th:action="@{/places/{placeId}/rooms/search (placeId= ${place.id})}" method="get">
-        <input type="hidden" th:value="${from}" th:name="from"></input>
-        <input type="hidden" th:value="${to}" th:name="to"></input>
-        <button type="submit" name="submit">Check Now</button>
-    </form>
-    <!--    <a th:href="@{/api/bia/places/{placeId}/rooms (placeId= ${place.id})}">-->
-    <!--        <span>see details</span></a>-->
+<div th:replace="fragments :: menu"/>
+<div style="display: flex;">
+    <div style="flex: 60%;">
+<div id="style1">
+    <div th:each="place :${places.getPlaces()}">
+        <p  class="d-flex justify-content-center" th:text="'name : ' + ${place.getName()}"></p>
+        <p  class="d-flex justify-content-center" th:text="'town : ' + ${place.getTownName()}"></p>
+        <p  class="d-flex justify-content-center" th:text="'phone number : ' +${place.getPhoneNumber()}"></p>
+        <p  class="d-flex justify-content-center" th:text="'id : ' +${place.getId()}"></p>
+        <form class="d-flex justify-content-center" th:action="@{/places/{placeId}/rooms/search (placeId= ${place.id})}" method="get">
+            <input type="hidden" th:value="${from}" th:name="from"></input>
+            <input type="hidden" th:value="${to}" th:name="to"></input>
+            <button  type="submit" name="submit">Check Now</button>
+        </form>
+        <hr>
+        <!--    <a th:href="@{/api/bia/places/{placeId}/rooms (placeId= ${place.id})}">-->
+        <!--        <span>see details</span></a>-->
+    </div>
 </div>
+    </div>
+    <div style="flex: 40%;">
+<hr>
+<div class="bd-example">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen=""></iframe>
+    </div>
+</div>
+        <hr>
+    </div>
+
+</div>
+</div>
+
+<hr>
 
 </body>
 </html>
