@@ -8,22 +8,22 @@
 </head>
 <body>
 <div th:replace="fragments :: menu"/>
+<div class="p-3 mb-2 bg-secondary text-white">
 <div style="display: flex;">
-    <div style="flex: 60%;">
+    <div style="flex: 10%"> </div>
+    <div style="flex: 50%;">
 <div id="style1">
     <div th:each="place :${places.getPlaces()}">
-        <p  class="d-flex justify-content-center" th:text="'name : ' + ${place.getName()}"></p>
-        <p  class="d-flex justify-content-center" th:text="'town : ' + ${place.getTownName()}"></p>
-        <p  class="d-flex justify-content-center" th:text="'phone number : ' +${place.getPhoneNumber()}"></p>
-        <p  class="d-flex justify-content-center" th:text="'id : ' +${place.getId()}"></p>
-        <form class="d-flex justify-content-center" th:action="@{/places/{placeId}/rooms/search (placeId= ${place.id})}" method="get">
+        <p  class="d-flex justify-content-left" th:text="'name : ' + ${place.getName()}"></p>
+        <p  class="d-flex justify-content-left" th:text="'town : ' + ${place.getTownName()}"></p>
+        <p  class="d-flex justify-content-left" th:text="'phone number : ' +${place.getPhoneNumber()}"></p>
+        <p  class="d-flex justify-content-left" th:text="'id : ' +${place.getId()}"></p>
+        <form class="d-flex justify-content-left" th:action="@{/places/{placeId}/rooms/search (placeId= ${place.id})}" method="get">
             <input type="hidden" th:value="${from}" th:name="from"></input>
             <input type="hidden" th:value="${to}" th:name="to"></input>
             <button  type="submit" name="submit">Check Now</button>
         </form>
         <hr>
-        <!--    <a th:href="@{/api/bia/places/{placeId}/rooms (placeId= ${place.id})}">-->
-        <!--        <span>see details</span></a>-->
     </div>
 </div>
     </div>
@@ -31,11 +31,13 @@
 <hr>
 <div class="bd-example">
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen=""></iframe>
+       <!-- <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=k84QxVJd0tI" allowfullscreen=""></iframe>-->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/k84QxVJd0tI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
         <hr>
     </div>
+</div>
 
 </div>
 </div>
