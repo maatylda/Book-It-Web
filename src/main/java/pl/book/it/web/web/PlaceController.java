@@ -20,27 +20,27 @@ import static pl.book.it.web.web.WebConst.*;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(PLACES_PATH)
+@RequestMapping
 public class PlaceController {
 
     private final PlaceClient placeClient;
     private final TownClient townClient;
 
-    @GetMapping
+    @GetMapping(PLACES_PATH)
     public String getAllPlaces(ModelMap modelMap) {
         final Places allPlaces = placeClient.findAllPlaces();
         modelMap.addAttribute("places", allPlaces);
         return "places";
     }
 
-    @GetMapping("/towns/{townName}")
+    @GetMapping("/places/towns/{townName}")
     public String getAllPlacesInTown(ModelMap modelMap, @PathVariable("townName") String townName) {
         final Places places = placeClient.findAllPlacesByTown(townName);
         modelMap.addAttribute("places", places);
         return "places";
     }
 
-    @GetMapping("/search")
+    @GetMapping("places/search")
     public String getAllPlacesInTownAvailableInDates(ModelMap modelMap, @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
                                                      @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo,
                                                      @RequestParam("town") String townName) {

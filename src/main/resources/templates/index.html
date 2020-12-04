@@ -8,9 +8,6 @@
 <body>
 <div>
     <div th:replace="fragments :: menu"/>
-
-    <!--<h1>Book it!</h1>-->
-
     <form action="#" th:action="@{/places/search}" method="get">
         <label for="from">Date from</label>
         <input id="from" type='date' th:name="from"/>
@@ -54,9 +51,5 @@
         </div>
     </div>
 </div>
-<!--<div>-->
-<!--    <img src="/file2.jpg" class="img-fluid" alt="Responsive image">-->
-<!--</div>-->
-
 </body>
 </html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>hello page</title>
+    <div th:replace="fragments :: style"/>
+</head>
+<div th:replace="fragments :: nav"></div>
+<div style="display: flex;">
+<div style="align-items: center; justify-content: flex-end" >
+    <h2>
+        <span sec:authorize="isAuthenticated()">Witaj! Jesteś zalogowany jako</span>
+            <span sec:authentication="name" style="color: darkblue"></span>
+    </h2>
+    <a href="index"><button class="btn btn-outline-primary">Let's book it!</button></a>
+</div>
+</div>
+<body>
+</body>
+</html>
