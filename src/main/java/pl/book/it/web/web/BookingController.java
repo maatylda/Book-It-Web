@@ -1,22 +1,17 @@
 package pl.book.it.web.web;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import model.Dto.BookingDto;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.book.it.web.client.BookingClient;
 
-import java.time.LocalDate;
+import java.security.Principal;
 
-import static pl.book.it.web.web.WebConst.*;
+import static pl.book.it.web.web.WebConst.BOOKINGS_PATH;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,22 +21,21 @@ public class BookingController {
 
     private final BookingClient bookingClient;
 
-    @GetMapping(path = "/new2", consumes = MediaType.ALL_VALUE)
-    public String createNewBooking2(Model model) {
-        model.addAttribute("bookingDto", new BookingDto());
+    @GetMapping(path = "/new2")
+    public String createNewBooking2(Model model,BookingDto bookingDto) {
+        model.addAttribute("bookingDto", bookingDto);
         return "booking_form";
     }
 
-    @PostMapping(path = "/new2", consumes = MediaType.ALL_VALUE)
-    public String createNewBooking(BookingDto bookingDto, @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
-                                   @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo, BindingResult bindingResult) {
-        bookingDto.setDateFrom(dateFrom);
-        bookingDto.setDateTo(dateTo);
+    @PostMapping(path = "/new2",
+            consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    public String createNewBooking(@ModelAttribute("booking") BookingDto bookingDto, @AuthenticationPrincipal Principal principal) {
+        bookingDto.setUserEmail(principal.getName());
         final BookingDto booking = bookingClient.createBooking(bookingDto);
-        return "redirect:users/bookings/myBooking";
+        return "redirect:/users/bookings/my";
     }
 
-    @GetMapping("/myBooking")
+    @GetMapping("/my")
     public String showBooking() {
         return "booking";
     }

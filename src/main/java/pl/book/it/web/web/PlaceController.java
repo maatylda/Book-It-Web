@@ -40,7 +40,7 @@ public class PlaceController {
         return "places";
     }
 
-    @GetMapping("places/search")
+    @GetMapping("/places/search")
     public String getAllPlacesInTownAvailableInDates(ModelMap modelMap, @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
                                                      @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo,
                                                      @RequestParam("town") String townName) {

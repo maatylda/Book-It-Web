@@ -5,7 +5,7 @@
     <title>Form</title>
 </head>
 <body>
-    <form th:action="@{/users/bookings/new2}" method="post" th:object="${bookingDto}">
+    <form th:action="@{/users/bookings/new2}" method="post" th:object="${bookingDto}" enctype="application/json">
         <div class="row">
             <label class="col-6" for="dateFrom">From</label>
             <input class="form-control" type="date" id="dateFrom"   th:name="from">
