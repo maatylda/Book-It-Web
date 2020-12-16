@@ -36,6 +36,6 @@ public class PlaceClient {
                 .queryParam("from", from.toString())
                 .queryParam("to", to.toString())
                 .queryParam("town", townName);
-        return restTemplate.getForObject(uriBuilder.toUriString(), Places.class);
+        return restTemplate.getForObject(uriBuilder.build().toString(), Places.class);
     }
 }

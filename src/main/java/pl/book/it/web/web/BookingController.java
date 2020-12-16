@@ -6,7 +6,10 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.book.it.web.client.BookingClient;
 
 import java.security.Principal;
@@ -22,7 +25,7 @@ public class BookingController {
     private final BookingClient bookingClient;
 
     @GetMapping(path = "/new2")
-    public String createNewBooking2(Model model,BookingDto bookingDto) {
+    public String createNewBooking2(Model model, BookingDto bookingDto) {
         model.addAttribute("bookingDto", bookingDto);
         return "booking_form";
     }

@@ -16,7 +16,7 @@ import pl.book.it.web.client.TownClient;
 import java.time.LocalDate;
 import java.util.Map;
 
-import static pl.book.it.web.web.WebConst.*;
+import static pl.book.it.web.web.WebConst.PLACES_PATH;
 
 @Controller
 @RequiredArgsConstructor
@@ -40,7 +40,7 @@ public class PlaceController {
         return "places";
     }
 
-    @GetMapping("/places/search")
+    @GetMapping(path = "/places/search")
     public String getAllPlacesInTownAvailableInDates(ModelMap modelMap, @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
                                                      @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo,
                                                      @RequestParam("town") String townName) {
