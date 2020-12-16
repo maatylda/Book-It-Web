@@ -21,17 +21,8 @@ public class WebConfiguration implements WebMvcConfigurer {
     public RestTemplate restTemplate(ApiUserConfig apiUserConfig) {
         final RestTemplate restTemplate = new RestTemplateBuilder()
                 .basicAuthentication(apiUserConfig.getUserName(), apiUserConfig.getPassword())
-                .messageConverters(new MappingJackson2HttpMessageConverter())
+                .messageConverters(new StringHttpMessageConverter(StandardCharsets.UTF_8), new MappingJackson2HttpMessageConverter())
                 .build();
-        StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
-        stringHttpMessageConverter.setWriteAcceptCharset(true);
-        for (int i = 0; i < restTemplate.getMessageConverters().size(); i++) {
-            if (restTemplate.getMessageConverters().get(i) instanceof StringHttpMessageConverter) {
-                restTemplate.getMessageConverters().remove(i);
-                restTemplate.getMessageConverters().add(i, stringHttpMessageConverter);
-                break;
-            }
-        }
         return restTemplate;
     }
 

@@ -2,11 +2,9 @@ package pl.book.it.web.client;
 
 import lombok.RequiredArgsConstructor;
 import model.Dto.BookingDto;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.book.it.web.config.BookingApiClientConfiguration;
-import pl.book.it.web.services.user.CustomUserDetailsService;
 
 import static pl.book.it.web.web.WebConst.API_BOOKINGS_PATH;
 
@@ -16,7 +14,6 @@ public class BookingClient {
 
     private final RestTemplate restTemplate;
     private final BookingApiClientConfiguration baConfig;
-
 
 
     public BookingDto createBooking(BookingDto bookingDto) {
